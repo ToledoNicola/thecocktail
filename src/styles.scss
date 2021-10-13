@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/scss/bootstrap";
+
+body {
+  font-family: "Roboto Condensed", sans-serif;
+  background-color: #fff8e8;
+}
+
+h6,
+.h6,
+h5,
+.h5,
+h4,
+.h4,
+h3,
+.h3,
+h2,
+.h2,
+h1,
+.h1 {
+  color: #c500ff;
+
+  font-weight: 700;
+}
+
+p,
+strong {
+  color: #333333;
+}
