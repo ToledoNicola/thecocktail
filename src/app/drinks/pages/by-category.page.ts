@@ -8,13 +8,12 @@ import { DrinksService } from '../drinks.service';
 
 @Component({
   template: `
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mb-4">
       <div class="col-6">
         <select
           [formControl]="fc"
-          class="form-select"
+          class="form-select form-select-lg"
         >
-          <option selected>Scegli una categoria</option>
           <option value="Cocktail">Cocktail</option>
           <option value="Homemade_Liqueur">Homemade Liqueur</option>
           <option value="Cocoa">Cocoa</option>

@@ -8,17 +8,15 @@ import { DrinksService } from '../drinks.service';
 
 @Component({
   template: `
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mb-4">
       <div class="col-6">
-        <select [formControl]="fc" class="form-select"           placeholder="Scrivi il nome del drink"
->
-          <option selected>Scegli una categoria</option>
+        <select
+          [formControl]="fc"
+          class="form-select form-select-lg"
+        >
           <ng-container *ngIf="ing$ | async as ing">
-            <option
-              *ngFor="let ing of ing"
-              [value]="ing.code"
-            >
-              {{ing.name}}
+            <option *ngFor="let ing of ing" [value]="ing.code">
+              {{ ing.name }}
             </option>
           </ng-container>
         </select>

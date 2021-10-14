@@ -5,7 +5,7 @@ import { FavoritesService } from './favorites.service';
 @Component({
   selector: 'app-favorites',
   template: `
-    <div class="row">
+    <div class="row mb-4">
       <div class="col">
         <h2 class="text-center">I tuoi drink preferiti</h2>
       </div>

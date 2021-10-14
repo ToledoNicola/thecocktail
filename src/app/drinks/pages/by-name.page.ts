@@ -8,7 +8,7 @@ import { DrinksService } from '../drinks.service';
 
 @Component({
   template: `
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mb-4">
       <div class="col-6">
         <input
           class="form-control form-control-lg"
