@@ -19,10 +19,7 @@ export class DrinksService {
   // });
   // filters$ = this.filterSubject.asObservable();
 
-  constructor(
-    private http: HttpClient,
-    private favouritesSrv: FavoritesService
-  ) {}
+  constructor(private http: HttpClient) {}
 
   getByName(name: string) {
     return this.http
@@ -32,38 +29,55 @@ export class DrinksService {
         map((ris) => ris.drinks)
       );
   }
-  getByIngredientr(name: string) {
+  getByIngredient(name: string) {
     return this.http
       .get<{ drinks: Drink[] }>(`${this.rootURL}/filter.php?i=${name}`)
       .pipe(
         tap(console.log),
-        map((ris) => ris.drinks)
+        map((ris) => ris?.drinks)
       );
   }
   getByAlcolic(name: string) {
     return this.http
-      .get<{ drinks: Drink[] }>(`${this.rootURL}/filter.php?a=Alcoholic?i=${name}`)
+      .get<{ drinks: Drink[] }>(`${this.rootURL}/filter.php?a=${name}`)
       .pipe(
         tap(console.log),
-        map((ris) => ris.drinks)
+        map((ris) => ris?.drinks)
       );
   }
-  getBy(name: string) {
+  getByCategory(name: string) {
     return this.http
-      .get<{ drinks: Drink[] }>(`${this.rootURL}/filter.php?i=${name}`)
+      .get<{ drinks: Drink[] }>(`${this.rootURL}/filter.php?c=${name}`)
       .pipe(
         tap(console.log),
-        map((ris) => ris.drinks)
+        map((ris) => ris?.drinks)
       );
   }
 
   getDrink(id: string) {
     return this.http
-      .get<{ drinks: Drink[] }>(
-        `${this.rootURL}/lookup.php?i=${id}`
-      )
+      .get<{ drinks: Drink[] }>(`${this.rootURL}/lookup.php?i=${id}`)
+      .pipe(map((ris) => ris.drinks[0]));
+  }
+  // getCategoryList() {
+  //   return this.http
+  //     .get<{ drinks: Drink[] }>(`${this.rootURL}/list.php?c=list`)
+  //     .pipe(map((ris) => ris.drinks[0]));
+  // }
+  getIngredientList() {
+    return this.http
+      .get<{
+        drinks: {
+          strIngredient1: string;
+        }[];
+      }>(`${this.rootURL}/list.php?i=list`)
       .pipe(
-        map((ris) => ris.drinks[0])
+        map((ris) =>
+          ris.drinks.map((ing) => ({
+            name: ing.strIngredient1,
+            code: ing.strIngredient1.replace(/ /g, '_'),
+          }))
+        )
       );
   }
 

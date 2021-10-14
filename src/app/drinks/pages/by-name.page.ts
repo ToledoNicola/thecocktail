@@ -20,7 +20,7 @@ import { DrinksService } from '../drinks.service';
     </div>
 
     <div class="mt-4" *ngIf="drinks$ | async as drinks">
-      <app-lista [drinks]="drinks">
+      <app-lista>
         <app-drink-card
           *ngFor="let drink of drinks; trackBy: trackById"
           [drink]="drink"

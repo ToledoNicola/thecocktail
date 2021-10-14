@@ -21,6 +21,7 @@ import { Drink } from 'src/app/models/drink';
      .drink {
         border-radius: 10px;
         height: 100%;
+        cursor: pointer;
       }
       .drink img {
         max-width: 100px;

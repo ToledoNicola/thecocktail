@@ -14,7 +14,7 @@ import { FavoritesService } from './favorites.service';
       <div class="col">
         <ng-container *ngIf="this.favSrv.favorites$ | async as drinks">
           <ng-container *ngIf="drinks.length > 0; else elseTemplate">
-      <app-lista [drinks]="drinks">
+      <app-lista>
         <app-drink-card
           *ngFor="let drink of drinks; trackBy: trackById"
           [drink]="drink"
